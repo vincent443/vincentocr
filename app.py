@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
-
-
 import streamlit as st
 import cv2
 import pytesseract
 import pandas as pd
 from PIL import Image
+import numpy as np
 import tempfile
-import os
 
 # Set Tesseract OCR path (handled automatically if hosted)
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
@@ -51,7 +49,8 @@ if uploaded_files:
     all_data = []
 
     for uploaded_file in uploaded_files:
-        st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+        # Display the uploaded image
+        st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
 
         # Read and preprocess image
         image = Image.open(uploaded_file)
